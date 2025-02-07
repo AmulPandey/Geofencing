@@ -33,6 +33,7 @@ class GeofencingBroadcastReceiver : BroadcastReceiver() {
         if (intent.action != Constants.ACTION_GEOFENCE_EVENT) return
 
         val geofencingEvent = GeofencingEvent.fromIntent(intent)
+        val triggeringGeofences = geofencingEvent?.triggeringGeofences ?: return
 
         if (geofencingEvent != null) {
             if (geofencingEvent.hasError()) {
@@ -45,6 +46,7 @@ class GeofencingBroadcastReceiver : BroadcastReceiver() {
                 Geofence.GEOFENCE_TRANSITION_EXIT -> handleExit(geofencingEvent)
             }
         }
+
     }
 
     private fun handleEnter(event: GeofencingEvent, context: Context) {

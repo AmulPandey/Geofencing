@@ -45,7 +45,6 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
         ) { backStackEntry ->
             val locationId = backStackEntry.arguments?.getLong("locationId") ?: -1
             VisitsScreen(
-                locationId = locationId,
                 navController = navController,
                 onNavigateToLocations = { navController.navigate(Screen.Locations.route) }
             )

@@ -1,14 +1,10 @@
 package com.example.location_tracker.domain.usecase
 
-
-import com.example.location_tracker.data.local.entity.Visit
 import com.example.location_tracker.data.repository.VisitRepository
 import javax.inject.Inject
 
-class UpdateVisitUseCase @Inject constructor(
+class GetVisitsForLocationUseCase @Inject constructor(
     private val visitRepository: VisitRepository
 ) {
-    suspend operator fun invoke(visit: Visit) {
-        visitRepository.updateVisit(visit)
-    }
+    operator fun invoke(locationId: Long) = visitRepository.getVisitsForLocation(locationId)
 }
